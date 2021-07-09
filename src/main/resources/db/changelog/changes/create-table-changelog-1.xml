@@ -30,4 +30,15 @@
         </createTable>
     </changeSet>
     
+    <changeSet author="admin" id="2">
+        <createTable tableName="preferences">
+        	<column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+			<column name="matiere" type="VARCHAR(8)">
+                <constraints  nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    
 </databaseChangeLog>
