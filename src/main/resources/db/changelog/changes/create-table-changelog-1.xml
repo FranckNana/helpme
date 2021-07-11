@@ -32,11 +32,31 @@
     
     <changeSet author="admin" id="2">
         <createTable tableName="preferences">
-        	<column autoIncrement="true" name="id" type="INT">
-                <constraints primaryKey="true"/>
-            </column>
 			<column name="matiere" type="VARCHAR(8)">
+			 	<constraints primaryKey="true"/>
+            </column>
+            <column name="ref_matiere" type="INT">
                 <constraints  nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    
+    <changeSet author="admin" id="3">
+        <createTable tableName="users_preferences">
+        	<column autoIncrement="true" name="id" type="INT">
+			 	<constraints primaryKey="true"/>
+            </column>
+			<column name="user_id" type="VARCHAR(80)">
+			 	<constraints  nullable="true"/>
+            </column>
+            <column name="choix1" type="VARCHAR(8)">
+                <constraints  nullable="true"/>
+            </column>
+             <column name="choix2" type="VARCHAR(8)">
+                <constraints  nullable="true"/>
+            </column>
+             <column name="choix3" type="VARCHAR(8)">
+                <constraints  nullable="true"/>
             </column>
         </createTable>
     </changeSet>

@@ -12,7 +12,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -75,7 +74,7 @@ public class JwtAuthenticationController {
 	 * @return
 	 * @throws Exception
 	 */
-	@DeleteMapping(value= "users/delete/{username}")
+	@DeleteMapping(value= "user/delete/{username}")
 	public ResponseEntity<?> deleteUser(@PathVariable String username) throws Exception {
 		userDetailsService.delete(username);
 		if(userDetailsService.findUserByUsername(username)==null) {
@@ -92,7 +91,7 @@ public class JwtAuthenticationController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "/update", method = RequestMethod.PUT)
+	@RequestMapping(value = "user/update", method = RequestMethod.PUT)
 	public ResponseEntity<?> updateUser(@RequestBody UserDTO user) throws Exception {
 		DAOUser userUpdated = userDetailsService.save(user);
 		return ResponseEntity.ok(userUpdated);
@@ -100,7 +99,7 @@ public class JwtAuthenticationController {
 	
 	
 	/**
-	 * retourn la liste de tous les utilisateurs 
+	 * retourne la liste de tous les utilisateurs 
 	 * @return
 	 * @throws Exception
 	 */
@@ -112,7 +111,7 @@ public class JwtAuthenticationController {
 	
 	
 	/**
-	 * retour le user passer en paramètre
+	 * retourne le user passer en paramètre
 	 * @param username
 	 * @return
 	 * @throws Exception
