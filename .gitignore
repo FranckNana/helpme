@@ -32,4 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 ### ignorer le fichier de config principal ####
-application.properties
+!**/src/main/resources/application.properties
