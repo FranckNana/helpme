@@ -61,4 +61,21 @@
         </createTable>
     </changeSet>
     
+    <changeSet author="admin" id="4">
+        <createTable tableName="publications">
+        	<column autoIncrement="true" name="id" type="INT">
+			 	<constraints primaryKey="true"/>
+            </column>
+			<column name="user_id" type="VARCHAR(80)">
+			 	<constraints  nullable="true"/>
+            </column>
+            <column name="link" type="VARCHAR(255)">
+                <constraints  nullable="true"/>
+            </column>
+             <column name="matiere" type="VARCHAR(8)">
+                <constraints  nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    
 </databaseChangeLog>

@@ -24,14 +24,25 @@ public class UserPreferencesRestService {
 	
 	public DAOUsersPreference addPreference(UserPreferencesDTO userPref) {
 		DAOUser user = userDao.findByUsername(userPref.getUsername());
+		DAOUsersPreference usersPreferencesByUserId = usersPreferencesDao.findUsersPreferencesByUserId(user.getEmail());
 		
-		DAOUsersPreference pref = new DAOUsersPreference();
+		if(usersPreferencesByUserId==null) {
+			DAOUsersPreference pref = new DAOUsersPreference();
+			
+			pref.setUser(user);
+			pref.setChoix1(MatiereType.of(preferenceDao.findByMatiere(userPref.getChoix1()).getMatiere()));
+			pref.setChoix2(MatiereType.of(preferenceDao.findByMatiere(userPref.getChoix2()).getMatiere()));
+			pref.setChoix3(MatiereType.of(preferenceDao.findByMatiere(userPref.getChoix3()).getMatiere()));
+			
+			return usersPreferencesDao.save(pref);
+		}else {
+			usersPreferencesByUserId.setUser(user);
+			usersPreferencesByUserId.setChoix1(MatiereType.of(preferenceDao.findByMatiere(userPref.getChoix1()).getMatiere()));
+			usersPreferencesByUserId.setChoix2(MatiereType.of(preferenceDao.findByMatiere(userPref.getChoix2()).getMatiere()));
+			usersPreferencesByUserId.setChoix3(MatiereType.of(preferenceDao.findByMatiere(userPref.getChoix3()).getMatiere()));
+			
+			return usersPreferencesDao.save(usersPreferencesByUserId);
+		}
 		
-		pref.setUser(user);
-		pref.setChoix1(MatiereType.of(preferenceDao.findByMatiere(userPref.getChoix1()).getMatiere()));
-		pref.setChoix2(MatiereType.of(preferenceDao.findByMatiere(userPref.getChoix2()).getMatiere()));
-		pref.setChoix3(MatiereType.of(preferenceDao.findByMatiere(userPref.getChoix3()).getMatiere()));
-		
-		return usersPreferencesDao.save(pref);
 	}
 }
