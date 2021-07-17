@@ -19,7 +19,7 @@ public class PublicationsController {
 	private PublicationsRestService publicationsRestService;
 
 	@RequestMapping(value = "/user/publication", method = RequestMethod.POST)
-	public ResponseEntity<?> createAuthenticationToken(@RequestBody PublicationsDTO pub) throws Exception {
+	public ResponseEntity<?> addPublications(@RequestBody PublicationsDTO pub) throws Exception {
 		return ResponseEntity.ok(publicationsRestService.addPublications(pub));
 	}
 }

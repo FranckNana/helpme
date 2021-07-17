@@ -19,7 +19,7 @@ public class UserPreferenceControler {
 	private UserPreferencesRestService userPreferencesRestService;
 
 	@RequestMapping(value = "/user/preferences", method = RequestMethod.POST)
-	public ResponseEntity<?> createAuthenticationToken(@RequestBody UserPreferencesDTO pref) throws Exception {
+	public ResponseEntity<?> addPreferences(@RequestBody UserPreferencesDTO pref) throws Exception {
 		return ResponseEntity.ok(userPreferencesRestService.addPreference(pref));
 	}
 }
